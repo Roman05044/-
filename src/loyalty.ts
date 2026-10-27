@@ -3,5 +3,6 @@ export interface LoyaltyOptions {
 }
 
 export function calcLoyaltyDiscount(years: number, options: LoyaltyOptions = {}): number {
-  throw new Error('INVALID_YEARS');
+  if (years < 0) throw new Error('INVALID_YEARS');
+  return 0;
 }
