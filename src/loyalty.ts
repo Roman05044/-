@@ -9,14 +9,18 @@ const RATES = {
   TIER_4: 15,
 };
 
+function getBaseRate(years: number): number {
+  if (years < 1) return RATES.TIER_1;
+  if (years < 3) return RATES.TIER_2;
+  if (years < 5) return RATES.TIER_3;
+  return RATES.TIER_4;
+}
+
 export function calcLoyaltyDiscount(years: number, options: LoyaltyOptions = {}): number {
   if (years < 0) throw new Error('INVALID_YEARS');
   
-  let rate = RATES.TIER_4;
-  if (years < 1) rate = RATES.TIER_1;
-  else if (years < 3) rate = RATES.TIER_2;
-  else if (years < 5) rate = RATES.TIER_3;
-
+  let rate = getBaseRate(years);
+  
   if (options.isBirthday) {
     rate *= 2;
   }
