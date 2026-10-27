@@ -13,4 +13,8 @@ describe('calcLoyaltyDiscount', () => {
   it.each([1, 2.99])('стаж від 1 до 3 років дає 5%: %s років', (years) => {
     expect(calcLoyaltyDiscount(years)).toBe(5);
   });
+
+  it.each([3, 4.99])('стаж від 3 до 5 років дає 10%: %s років', (years) => {
+    expect(calcLoyaltyDiscount(years)).toBe(10);
+  });
 });
